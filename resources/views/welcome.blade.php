@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="bg-white">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="bg-white scroll-smooth">
 
 <head>
     <meta charset="utf-8">
@@ -910,7 +910,7 @@
 </head>
 
 <body class="h-full">
-    <div class="min-h-full  scroll-smooth">
+    <div class="min-h-full">
         <nav class="bg-white shadow sticky top-0 z-[99]" x-data="{ isOpen: false, isProfileOpen: false }">
             <div class="mx-auto max-w-7xl px-12 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
@@ -920,15 +920,16 @@
                         </div>
                         <div class="hidden lg:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <a href="#hero" id="nav-hero" class="rounded-lg px-3 py-2 text-sm font-medium"
-                                    aria-current="page">Beranda</a>
+                                <a href="#hero" id="nav-hero"
+                                    class="rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100">Beranda</a>
                                 <a href="#about" id="nav-about"
-                                    class="rounded-md px-3 py-2 text-sm font-medium">Tentang Kami</a>
+                                    class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100">Tentang Kami</a>
                                 <a href="#books" id="nav-books"
-                                    class="rounded-md px-3 py-2 text-sm font-medium">Katalog Buku</a>
+                                    class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100">Koleksi Buku</a>
                                 <a href="#contact" id="nav-contact"
-                                    class="rounded-md px-3 py-2 text-sm font-medium">Kontak</a>
+                                    class="rounded-md px-3 py-2 text-sm font-medium hover:bg-slate-100">Kontak</a>
                             </div>
+
                         </div>
                         <div class="hidden lg:block">
                             <div class="ml-4 flex items-center md:ml-6">
@@ -936,18 +937,18 @@
                                     <nav class="-mx-3 flex flex-1 gap-2 justify-end">
                                         @auth
                                             <a href="{{ url('/dashboard') }}"
-                                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 shadow-sm hover:shadow-md">
+                                                class="rounded-md px-6 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 shadow-sm hover:shadow-md">
                                                 Dashboard
                                             </a>
                                         @else
                                             <a href="{{ route('login') }}"
-                                                class="rounded-md px-3 py-2 text-sm !text-white shadow ring-1 ring-transparent transition bg-gray-900 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 hover:shadow-xl">
+                                                class="rounded-md px-4 py-1.5 text-sm !text-white shadow ring-1 ring-transparent transition bg-gray-900 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 hover:shadow-xl">
                                                 Masuk
                                             </a>
 
                                             @if (Route::has('register'))
                                                 <a href="{{ route('register') }}"
-                                                    class="rounded-md px-3 py-2 text-sm text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 shadow-sm hover:shadow-md">
+                                                    class="rounded-md px-4 py-1.5 text-sm text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 shadow-sm hover:shadow-md">
                                                     Daftar
                                                 </a>
                                             @endif
@@ -989,21 +990,31 @@
                 class="md:hidden z-[999]" id="mobile-menu">
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                    <a href="#" class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-                        aria-current="page">Dashboard</a>
-                    <a href="#"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Team</a>
-                    <a href="#"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Projects</a>
-                    <a href="#"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Calendar</a>
-                    <a href="#"
-                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-gray-700 hover:text-white">Reports</a>
+                    <a href="#hero" @click="isOpen = false"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-slate-100">Beranda</a>
+                    <a href="#about" @click="isOpen = false"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-slate-100">Tentang
+                        Kami</a>
+                    <a href="#books" @click="isOpen = false"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-slate-100">Koleksi
+                        Buku</a>
+                    <a href="#contact" @click="isOpen = false"
+                        class="block rounded-md px-3 py-2 text-base font-medium text-gray-800 hover:bg-slate-100">Kontak</a>
+                    <div class="flex items-center justify-center gap-2">
+                        <a href="{{ route('login') }}"
+                            class="rounded-md px-6 py-2 text-sm !text-white shadow ring-1 ring-transparent transition bg-gray-900 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 hover:shadow-xl">
+                            Masuk
+                        </a>
+                        <a href="{{ route('register') }}"
+                            class="rounded-md px-6 py-2 text-sm text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] border border-slate-800/50 shadow-sm hover:shadow-md">
+                            Daftar
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
-        <main id="hero" class="mx-auto max-w-7xl min-h-screen px-4 py-6 sm:px-6 lg:px-8">
-            <div class="relative max-w-screen-xl px-5 mt-28 mx-auto">
+        <main id="hero" class="mx-auto max-w-7xl min-h-screen px-4 my-6 sm:px-6 lg:px-8">
+            <div class="relative max-w-screen-xl px-5 pt-28 mx-auto">
                 <!-- Book Icon 1 -->
                 <div class="absolute -left-2 -translate-y-12 pointer-events-none md:left-[12%]">
                     <svg x-data="{
@@ -1073,9 +1084,9 @@
                     </p>
                     <div
                         class="mt-6 max-w-sm mx-auto flex flex-col justify-center items-center gap-4 sm:flex-row md:mt-8 lg:mt-10">
-                        <button
-                            class="border border-gray-800 px-4 py-2 font-semibold transition duration-500 hover:bg-gray-200">Jelajahi
-                            Sekarang</button>
+                        <a class="border border-gray-800 px-4 py-2 font-semibold transition duration-500 hover:bg-gray-200"
+                            href="#about">Jelajahi
+                            Sekarang</a>
                     </div>
                 </div>
 
@@ -1085,7 +1096,7 @@
         </main>
         <section id="about">
             <div
-                class="bg-gray-100 w-full mx-auto flex flex-col justify-center items-center gap-12 py-24 px-12 sm:flex-row sm:items-start xl:gap-0">
+                class="bg-gray-100 w-full mx-auto flex flex-col justify-center items-center gap-12 py-28 px-12 sm:flex-row sm:items-start xl:gap-0">
                 <div class="w-full flex justify-center">
                     <img src="https://cdn0-production-images-kly.akamaized.net/fmXC_1iZhBKOXY7B6eEEgTqUDRU=/640x360/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/1017658/original/035927600_1444628523-kpl-640x386.jpg"
                         alt="perpustakaan" class="rounded shadow w-96 ">
@@ -1113,17 +1124,17 @@
                 </div>
             </div>
         </section>
-        <section id="books" class="py-16 bg-gray-100">
+        <section id="books" class="py-16 px-12 bg-gray-100">
             <div class="container max-w-[1000px] mx-auto">
                 <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">Koleksi Buku</h2>
                 <p class="text-center text-slate-500 mb-12">Sejarah</p>
-                <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                <div class="grid gap-8 grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     @foreach ($data as $d)
-                        <a href="detail/{{ $d['id'] }}" class="group w-full cursor-pointer">
+                        <div class="group w-full cursor-pointer">
                             <img src={{ $d['image'] }} alt="Cover Buku"
-                                class="w-44 h-60 group-hover:scale-105 transition rounded shadow-xl  duration-500 object-cover">
-                            <h4 class="text-md font-semibold text-gray-800 mt-6">{{ $d['name'] }}</h4>
-                        </a>
+                                class="w-32 h-44 md:w-44 md:h-60 group-hover:scale-105 transition rounded shadow-xl  duration-500 object-cover">
+                            <h4 class="text-md truncate font-semibold text-gray-800 mt-6">{{ $d['name'] }}</h4>
+                        </div>
                     @endforeach
                 </div>
                 <div class="flex items-center justify-center py-12">
@@ -1132,7 +1143,7 @@
                 </div>
             </div>
         </section>
-        <footer id="contact" class="bg-white text-slate-800 pt-8 pb-4">
+        <footer id="contact" class="bg-white text-slate-800 pt-16 pb-4">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row md:justify-between">
                     <!-- Section 1: Logo and Description -->
@@ -1146,10 +1157,18 @@
                     <div class="mb-6 md:mb-0">
                         <h3 class="text-xl font-semibold mb-2">Navigasi</h3>
                         <ul>
-                            <li><a href="#" class="hover:text-red-400 transition-colors">Beranda</a></li>
-                            <li><a href="#" class="hover:text-red-400 transition-colors">Tentang Kami</a></li>
-                            <li><a href="#" class="hover:text-red-400 transition-colors">Katalog Buku</a></li>
-                            <li><a href="#" class="hover:text-red-400 transition-colors">Kontak</a></li>
+                            <li><a href="#hero"
+                                    class="hover:text-slate-800 text-slate-600 text-sm transition-colors">Beranda</a>
+                            </li>
+                            <li><a href="#about"
+                                    class="hover:text-slate-800 text-slate-600 text-sm transition-colors">Tentang
+                                    Kami</a></li>
+                            <li><a href="#books"
+                                    class="hover:text-slate-800 text-slate-600 text-sm transition-colors">Katalog
+                                    Buku</a></li>
+                            <li><a href="#contact"
+                                    class="hover:text-slate-800 text-slate-600 text-sm transition-colors">Kontak</a>
+                            </li>
                         </ul>
                     </div>
 
@@ -1157,14 +1176,16 @@
                     <div>
                         <h3 class="text-xl font-semibold mb-2">Ikuti Kami</h3>
                         <div class="flex space-x-4">
-                            <a href="#" class="hover:text-red-400 transition-colors">
+                            <a href="https://www.instagram.com/syahridhoa_/"
+                                class="hover:text-red-400 transition-colors">
                                 <img src="assets/icons/instagram.svg" alt="instagram">
                             </a>
-                            <a href="#" class="hover:text-red-400 transition-colors">
-                                <img src="assets/icons/youtube.svg" alt="instagram">
+                            <a href="https://github.com/Syahridho" class="hover:text-red-400 transition-colors">
+                                <img src="assets/icons/github.svg" alt="instagram">
                             </a>
-                            <a href="#" class="hover:text-red-400 transition-colors">
-                                <img src="assets/icons/facebook.svg" alt="instagram">
+                            <a href="mailto:syahridhosyahputra@gmail.com?Subject=I%20want%20help%20you"
+                                class="hover:text-red-400 transition-colors">
+                                <img src="assets/icons/mail.svg" alt="instagram">
                             </a>
                         </div>
 
@@ -1174,7 +1195,7 @@
 
             </div>
             <div class="mt-8 border-t border-gray-300 pt-4 text-center">
-                <p class="text-gray-400 text-sm">&copy; 2024 Perpustakaan Online. Semua Hak Dilindungi.</p>
+                <p class="text-gray-400 text-sm">&copy; 2024 Syahridho Arjuna Syahputra</p>
             </div>
         </footer>
     </div>
