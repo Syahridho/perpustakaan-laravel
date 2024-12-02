@@ -1195,7 +1195,7 @@
 
             </div>
             <div class="mt-8 border-t border-gray-300 pt-4 text-center">
-                <p class="text-gray-400 text-sm">&copy; 2024 Syahridho Arjuna Syahputra</p>
+                <p class="text-gray-400 text-sm">&copy; 2024 By Syahridho Arjuna Syahputra</p>
             </div>
         </footer>
     </div>
